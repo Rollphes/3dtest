@@ -13,30 +13,31 @@
 
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-    document.getElementById("container").appendChild(renderer.domElement)
+    document.getElementById("container").appendChild(renderer.domElement);
 
     var camera = new THREE.PerspectiveCamera(45, SCREEN_WIDTH/SCREEN_HEIGHT, 1, 10000);
-    TorusGeometry = new THREE.TorusGeometry(150, 80, 10, 20);
-    TorusMaterial = new THREE.MeshPhongMaterial( {
-      color: 0x6a3906
-    });
-    TorusMesh = new THREE.Mesh(TorusGeometry, TorusMaterial);
-    TorusMesh.position.y = 200;
+    box = new THREE.Mesh(
+      new THREE.BoxGeometry(50, 50, 50),
+      new THREE.MeshLambertMaterial({
+        color: 0xff0000
+      })
+    );
+    box.position.set(0, 0, 0);
+    scene.add(box);
 
-    var scene = new THREE.Scene()
-    scene.add(camera)
-    scene.add(TorusMesh);
+    var scene = new THREE.Scene();
+    scene.add(camera);
 
     camera.position.z = 200
-    controls = new THREE.TrackballControls(camera, renderer.domElement)
+    controls = new THREE.TrackballControls(camera, renderer.domElement);
 
     function render() {
-      requestAnimationFrame(render)
-      renderer.render(scene, camera)
-      controls.update()
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+      controls.update();
     }
 
-    render()
+    render();
   </script>
 </body>
 </html>
