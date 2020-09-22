@@ -1,55 +1,57 @@
 <html>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <body>
-<script src="build/three.min.js"></script>
-<script src="js/controls/TrackballControls.js"></script>
-<script>
- 
-init();
-animate();
-  
-function init() {
-    //シーン
-    scene = new THREE.Scene();
-  
-    //カメラ
-    camera = new THREE.PerspectiveCamera( 75, 640/480, 1, 10000 );
-    camera.position.z = 1000;
-     
-    trackball = new THREE.TrackballControls( camera );
-    trackball.rotateSpeed = 5.0; //回転速度
-    trackball.zoomSpeed = 0.5;//ズーム速度
-    trackball.panSpeed = 2.0;//パン速度
-     
-    //ライティング
-    var directionalLight = new THREE.DirectionalLight( 0xffffff, 2 ); //平行光源（色、強度）
-    directionalLight.position.set(0,0,3);
-    scene.add( directionalLight );
-     
-    //トーラスオブジェクト
-    TorusGeometry = new THREE.TorusGeometry(150,80,10,20 );
-    TorusMaterial = new THREE.MeshPhongMaterial( { color: 0x6a3906 } );
-    TorusMesh = new THREE.Mesh( TorusGeometry, TorusMaterial );
-    TorusMesh.position.y = 200;
-    scene.add( TorusMesh );
-     
-    //グリッド
-    grid = new THREE.GridHelper(600, 10, 0x888888, 0x888888);
-    grid.position.y = -40;
-    scene.add(grid);
-     
-    //レンダラー
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize( 640, 480 );
-    renderer.setClearColor(new THREE.Color('white'));//背景色の設定
-    document.body.appendChild( renderer.domElement );
-}
-  
-function animate() {
-    requestAnimationFrame( animate );
-    renderer.render( scene, camera );
-    trackball.update();   
-}
-</script>
+  <script src="three.min.js"></script>
+  <script src="TrackballControls.js"></script>
+  <script>
+
+    init();
+    animate();
+
+    function init() {
+      //シーン
+      scene = new THREE.Scene();
+
+      //カメラ
+      camera = new THREE.PerspectiveCamera(75, 640/480, 1, 10000);
+      camera.position.z = 1000;
+
+      trackball = new THREE.TrackballControls(camera);
+      trackball.rotateSpeed = 5.0; //回転速度
+      trackball.zoomSpeed = 0.5; //ズーム速度
+      trackball.panSpeed = 2.0; //パン速度
+
+      //ライティング
+      var directionalLight = new THREE.DirectionalLight(0xffffff, 2); //平行光源（色、強度）
+      directionalLight.position.set(0, 0, 3);
+      scene.add(directionalLight);
+
+      //トーラスオブジェクト
+      TorusGeometry = new THREE.TorusGeometry(150, 80, 10, 20);
+      TorusMaterial = new THREE.MeshPhongMaterial( {
+        color: 0x6a3906
+      });
+      TorusMesh = new THREE.Mesh(TorusGeometry, TorusMaterial);
+      TorusMesh.position.y = 200;
+      scene.add(TorusMesh);
+
+      //グリッド
+      grid = new THREE.GridHelper(600, 10, 0x888888, 0x888888);
+      grid.position.y = -40;
+      scene.add(grid);
+
+      //レンダラー
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(640, 480);
+      renderer.setClearColor(new THREE.Color('white')); //背景色の設定
+      document.body.appendChild(renderer.domElement);
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+      trackball.update();
+    }
+  </script>
 </body>
 </html>
