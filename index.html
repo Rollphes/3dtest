@@ -19,7 +19,8 @@
       images[i] = new THREE.MeshBasicMaterial( {
         map: loader.load('test' + (i + 1) + '.png')
       });
-      images[i].map.minFilter = THREE.NearestFilter;
+      images[i].map.minFilter = THREE.LinearFilter;
+      images[i].map.magFilter = THREE.NearestFilter;
     }
 
     var camera = new THREE.PerspectiveCamera(45, SCREEN_WIDTH/SCREEN_HEIGHT, 1, 10000);
