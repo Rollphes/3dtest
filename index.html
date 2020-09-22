@@ -2,7 +2,6 @@
 <html>
 <body>
   <div id='container'></div>
-  <h2 id='hello'>Hello World!</h2>
 
   <script src='https://rawgithub.com/mrdoob/three.js/master/build/three.min.js'></script>
   <script src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
@@ -12,16 +11,21 @@
     var SCREEN_WIDTH = window.screen.width;
     var SCREEN_HEIGHT = window.screen.height;
 
-    renderer = new THREE.CSS3DRenderer()
-    renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT)
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     document.getElementById("container").appendChild(renderer.domElement)
 
-    var camera = new THREE.PerspectiveCamera(45, SCREEN_WIDTH/SCREEN_HEIGHT, 1, 10000)
-    var hello = new THREE.CSS3DObject(document.getElementById('hello'))
+    var camera = new THREE.PerspectiveCamera(45, SCREEN_WIDTH/SCREEN_HEIGHT, 1, 10000);
+    TorusGeometry = new THREE.TorusGeometry(150, 80, 10, 20);
+    TorusMaterial = new THREE.MeshPhongMaterial( {
+      color: 0x6a3906
+    });
+    TorusMesh = new THREE.Mesh(TorusGeometry, TorusMaterial);
+    TorusMesh.position.y = 200;
 
     var scene = new THREE.Scene()
     scene.add(camera)
-    scene.add(hello)
+    scene.add(TorusMesh);
 
     camera.position.z = 200
     controls = new THREE.TrackballControls(camera, renderer.domElement)
