@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <div id='container'></div>
 
   <script src='https://rawgithub.com/mrdoob/three.js/master/build/three.min.js'></script>
   <script src="https://rawgithub.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
@@ -13,7 +12,7 @@
 
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-    document.getElementById("container").appendChild(renderer.domElement);
+    document.body.appendChild(renderer.domElement);
 
     var camera = new THREE.PerspectiveCamera(45, SCREEN_WIDTH/SCREEN_HEIGHT, 1, 10000);
     var box = new THREE.Mesh(
@@ -34,7 +33,6 @@
 
     camera.position.z = 200
     controls = new THREE.TrackballControls(camera, renderer.domElement);
-    わ
     function render() {
       requestAnimationFrame(render);
       renderer.render(scene, camera);
