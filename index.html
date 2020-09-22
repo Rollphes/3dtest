@@ -23,8 +23,7 @@
     );
     box.position.set(0, 0, 0);
 
-    var light = new THREE.DirectionalLight(0xffffff, 1); // 色、光の強さ
-    light.position.set(0, 100, 30);
+    var light = new THREE.AmbientLight(0xffffff, 1); // 色、光の強さ
 
     var scene = new THREE.Scene();
     scene.add(camera);
