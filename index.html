@@ -8,8 +8,8 @@
   <script src="https://rawgithub.com/mrdoob/three.js/master/examples/js/renderers/CSS3DRenderer.js"></script>
 
   <script>
-    var SCREEN_WIDTH = window.screen.width;
-    var SCREEN_HEIGHT = window.screen.height;
+    var SCREEN_WIDTH = window.innerWidth;
+    var SCREEN_HEIGHT = window.innerHeight;
 
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -34,7 +34,7 @@
 
     camera.position.z = 200
     controls = new THREE.TrackballControls(camera, renderer.domElement);
-
+    わ
     function render() {
       requestAnimationFrame(render);
       renderer.render(scene, camera);
