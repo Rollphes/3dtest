@@ -16,17 +16,21 @@
     document.getElementById("container").appendChild(renderer.domElement);
 
     var camera = new THREE.PerspectiveCamera(45, SCREEN_WIDTH/SCREEN_HEIGHT, 1, 10000);
-    box = new THREE.Mesh(
+    var box = new THREE.Mesh(
       new THREE.BoxGeometry(50, 50, 50),
       new THREE.MeshLambertMaterial({
         color: 0xff0000
       })
     );
     box.position.set(0, 0, 0);
-    scene.add(box);
+
+    var light = new THREE.DirectionalLight(0xffffff, 1); // 色、光の強さ
+    light.position.set(0, 100, 30);
+    scene.add(light);
 
     var scene = new THREE.Scene();
     scene.add(camera);
+    scene.add(box);
 
     camera.position.z = 200
     controls = new THREE.TrackballControls(camera, renderer.domElement);
