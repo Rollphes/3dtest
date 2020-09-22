@@ -17,7 +17,7 @@
     var images = [];
     for (var i = 0; i < 6; i++) {
       images[i] = new THREE.MeshBasicMaterial( {
-        map: loder.load('test' + (i + 1) + '.png');
+        map: loder.load('test' + (i + 1) + '.png')
       });
       images[i].map.minFilter = THREE.NearestFilter;
     }
