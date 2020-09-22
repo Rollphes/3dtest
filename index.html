@@ -20,6 +20,7 @@
           renderer.render(scene, camera);
         })
       });
+      images[i].map.minFilter = THREE.NearestFilter;
     }
 
     var camera = new THREE.PerspectiveCamera(45, SCREEN_WIDTH/SCREEN_HEIGHT, 1, 10000);
