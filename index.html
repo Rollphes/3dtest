@@ -26,11 +26,11 @@
 
     var light = new THREE.DirectionalLight(0xffffff, 1); // 色、光の強さ
     light.position.set(0, 100, 30);
-    scene.add(light);
 
     var scene = new THREE.Scene();
     scene.add(camera);
     scene.add(box);
+    scene.add(light);
 
     camera.position.z = 200
     controls = new THREE.TrackballControls(camera, renderer.domElement);
