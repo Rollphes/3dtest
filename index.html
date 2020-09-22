@@ -9,17 +9,23 @@
   <script>
     var SCREEN_WIDTH = window.innerWidth;
     var SCREEN_HEIGHT = window.innerHeight;
-
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
     document.body.appendChild(renderer.domElement);
 
+    var images = [];
+    for (var i = 0; i < 6; i++) {
+      images[i] = new THREE.MeshBasicMaterial( {
+        map: THREE.ImageUtils.loadTexture('test' + (i + 1) + '.png', {}, function() {
+          renderer.render(scene, camera);
+        })
+      });
+    }
+
     var camera = new THREE.PerspectiveCamera(45, SCREEN_WIDTH/SCREEN_HEIGHT, 1, 10000);
     var box = new THREE.Mesh(
       new THREE.BoxGeometry(50, 50, 50),
-      new THREE.MeshLambertMaterial({
-        color: 0xff0000
-      })
+      new THREE.MeshFaceMaterial(images);
     );
     box.position.set(0, 0, 0);
 
